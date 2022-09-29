@@ -1,0 +1,24 @@
+/* FONTS
+======== */
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700;800&display=swap");
+
+
+/* HELPERS
+============= */
+@import "./helpers/resets";
+@import "./helpers/variables";
+
+/* COMPONENTS
+============= */
+@import './components/button';
+@import './components/navbar';
+@import './components/post-card';
+
+
+/* PAGES 
+======== */
+@import './pages/\ new-feed-page';
+
+
+/* Globals
+========== */

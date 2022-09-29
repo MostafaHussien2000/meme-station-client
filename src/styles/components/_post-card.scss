@@ -1,0 +1,245 @@
+.post_card {
+  width: 600px;
+  margin: 40px 0px;
+  padding: 30px;
+  border-radius: 30px;
+  background: $light-bg;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  .top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 10px;
+
+    .profile_pic {
+      width: 70px;
+      height: 70px;
+      border-radius: 20px;
+      overflow: hidden;
+    }
+
+    .info {
+      flex-grow: 2;
+
+      .username {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        gap: 5px;
+
+        span:first-of-type {
+            font-size: 15px;
+            opacity: 0.5;
+        }
+
+        svg {
+            fill: $blue-color
+        }
+      }
+
+      .full_name {
+        display: flex;
+        align-items: flex-end;
+        gap: 10px;
+
+        .time {
+            opacity: 0.4;
+            font-weight: 500;
+            font-size: 14px;
+        }
+      }
+    }
+
+    .menu {
+      font-size: 25px;
+      position: relative;
+
+      svg {
+        cursor: pointer;
+      }
+
+      .menu-wrapper {
+        position: absolute;
+        background: #fafafa;
+        box-shadow: 5px 5px 10px #acacac3a;
+        padding: 10px;
+        border-radius: 10px;
+        display: block;
+        font-size: 15px;
+        right: 100%;
+        top: 0px;
+
+        .tags {
+
+          h2 {
+            font-size: 18px
+          }
+
+          ul {
+            margin-top: 5px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+
+            li {
+              padding: 3px 7px;
+              background: $input-bg;
+              border-radius: 7px;
+              font-size: 12px;
+              cursor: pointer;
+
+              &:hover {
+                text-decoration: underline;
+              }
+            }
+          }
+          
+        }
+        
+        hr {
+          margin: 10px 0px;
+          opacity: 0.2;
+        }
+
+        .actions {
+        
+          li {
+            min-width: 175px;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            gap: 10px;
+            padding: 10px ;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background 0.2s ease;
+
+            &:hover {
+              background: $input-bg;
+            }
+            
+            &.danger {
+              * {
+                color: $danger-color
+              }
+              
+              &:hover {
+                background: #F9565615;
+              }
+            }
+
+            .icon {
+              display: flex;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .caption {
+    font-size: 15px;
+  }
+
+  .main-part {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 10px;
+
+    .meme {
+        flex-grow: 2;
+        max-height: 450px;
+        overflow: hidden;
+        border-radius: 20px;
+        cursor: pointer;
+        background-color: $input-placeholder;
+    }
+
+    .actions {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+
+      * {
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 40px;
+        height: 40px;
+        padding: 4px;
+      }
+
+      input {
+        display: none;
+
+        &:checked + label {
+          background: #000;
+
+          svg {
+            stroke: #fff;
+          }
+        }
+      }
+
+      label {
+        border-radius: 13px;
+        transition: all 0.2s ease;
+      }
+    }
+  }
+
+  .states {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    opacity: 0.4;
+
+    .state {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      gap: 5px;
+
+      span.count {
+        font-size: 15px;
+      }
+    }
+  }
+
+  .comment {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    .profile_pic {
+      width: 50px;
+      height: 50px;
+      overflow: hidden;
+      border-radius: 15px;
+    }
+
+    .comment_box {
+      position: relative;
+      flex-grow: 2;
+
+      svg {
+        position: absolute;
+        font-size: 25px;
+        right: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+        cursor: pointer; 
+        fill: $input-placeholder;
+      }
+
+      input[type="file"] {
+        display: none;
+      }
+    }
+  }
+}

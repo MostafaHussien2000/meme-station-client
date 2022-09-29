@@ -1,0 +1,50 @@
+nav {
+    padding: 10px 0px;
+
+    ul {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 70px;
+
+        li {
+            a.nav_link {
+                padding: 10px 5px;
+                font-size: 25px;
+                position: relative;
+                text-align: center;
+                display: block;
+                opacity: 0.5;
+                transition: all 0.2s ease;
+
+                
+                &.active{
+                    opacity: 1;
+
+                    &::before {
+                        content: '';
+                        position: absolute;
+                        bottom: 0px;
+                        left: 0px;
+                        height: 4px;
+                        width: 100%;
+                        border-radius: 10px;
+                        background: #000;
+                        animation: jump-in 0.2s cubic-bezier(.55,1.18,.73,1.3) 0s 0;
+                    }
+                }
+                
+            }
+        }
+    }
+}
+
+@keyframes jump-in {
+    0% {
+        transform: translateX(calc(100% + 20px));
+    }
+
+    100% {
+        transform: translateX(0px);
+    }
+}
