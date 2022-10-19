@@ -98,8 +98,13 @@ function PostCard() {
             <HiOutlineArrowSmUp />
           </label>
           <input type="radio" id="dislike" name="likeOrDislike" />
-          <label className="dislike" htmlFor="dislike">
-            <HiOutlineArrowSmDown />
+          <label className="dislike" htmlFor="dislike" onClick={(e) => {
+            // e.target.closest("input#dislike").checked = false
+            console.log("B:", e.target.previousElementSibling.checked)
+            e.target.previousElementSibling.checked = 'x'
+            console.log("A:", e.target.previousElementSibling.checked)
+          }}>
+            <HiOutlineArrowSmDown onClick={e => e.stopPropagation()} />
           </label>
           <label className="comment" htmlFor="commentBox">
             <MdModeComment />

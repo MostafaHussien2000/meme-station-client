@@ -13,11 +13,14 @@
 @import './components/button';
 @import './components/navbar';
 @import './components/post-card';
+@import './components/loading';
 
 
 /* PAGES 
 ======== */
-@import './pages/\ new-feed-page';
+@import './pages/new-feed-page';
+@import './pages/home-page';
+@import './pages/form-page';
 
 
 /* Globals

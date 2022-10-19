@@ -189,6 +189,10 @@
       label {
         border-radius: 13px;
         transition: all 0.2s ease;
+
+        * {
+          pointer-events: none;
+        }
       }
     }
   }
@@ -221,6 +225,7 @@
       height: 50px;
       overflow: hidden;
       border-radius: 15px;
+      background: $input-placeholder;
     }
 
     .comment_box {

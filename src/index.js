@@ -6,11 +6,18 @@ import reportWebVitals from "./reportWebVitals";
 
 import { BrowserRouter } from "react-router-dom";
 
+import { AnimatePresence } from "framer-motion";
+import { UserProvider } from "./context/loggedUserContext";
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <BrowserRouter>
-      <App />
+      <AnimatePresence mode="wait">
+        <UserProvider>
+          <App />
+        </UserProvider>
+      </AnimatePresence>
     </BrowserRouter>
   </React.StrictMode>
 );

@@ -1,0 +1,88 @@
+.home-page {
+  header {
+    padding: 20px 0px;
+    width: 70%;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+
+      img {
+        width: 50px;
+      }
+
+      span {
+        font-size: 15px;
+        font-weight: 700;
+      }
+    }
+
+    .actions {
+      display: flex;
+      gap: 10px;
+
+      a, button {
+        padding: 10px 15px;
+        border-radius: 15px;
+        border: none;
+        cursor: pointer;
+        font-size: 15px;
+        font-weight: 500;
+
+        &#login {
+          background-color: $input-bg;
+        }
+
+        &#create-account {
+          background-color: $application-color;
+          color: #fff;
+        }
+      }
+    }
+  }
+
+  center {
+    margin-top: 70px;
+    padding: 70px 10px;
+    background: #fff;
+
+    h1 {
+      font-weight: 900;
+      font-size: 55px;
+      line-height: 90%;
+    }
+
+    a#join {
+      background-color: $application-color;
+      color: #fff;
+      display: inline-block;
+      padding: 15px 22px;
+      border-radius: 19px;
+      border: none;
+      cursor: pointer;
+      font-size: 17px;
+      font-weight: 500;
+      margin-top: 40px;
+    }
+  }
+}
+
+@media screen and (max-width: 750px) {
+  .home-page {
+    header {
+      width: 100%;
+      padding: 10px;
+    }
+
+    center {
+      h1 {
+        font-size: 35px;
+      }
+    }
+  }
+}

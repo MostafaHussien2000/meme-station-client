@@ -48,3 +48,62 @@ nav {
         transform: translateX(0px);
     }
 }
+
+@media screen and (max-width: 750px) {
+    nav {
+        position: fixed;
+        bottom: 20px;
+        z-index: 9999;
+        background: #000000;
+        left: 50%;
+        transform: translateX(-50%);
+        padding: 10px 100px;
+        border-radius: 70px;
+        box-shadow: 0px 5px 20px #000000b2;
+        width: 100%;
+        max-width: 350px;
+
+        ul {
+            gap: 20px;
+
+            li {
+                a.nav_link {
+    
+                    width: 60px;
+                    height: 60px;
+                    padding: 0px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    border-radius: 50px;
+                    
+                    &.active{
+    
+                        transform: translateY(-50%);
+                        background: #fff;
+    
+    
+                        &::before {
+                            display: none;
+                        }
+    
+                        svg path {
+                            fill: #000;
+                            stroke: #000;
+                        }
+    
+                    }
+    
+                    svg path {
+                        fill: #fff;
+                        stroke: #fff;
+                    }
+                    
+                 }
+                
+            }
+        }
+
+    }
+
+}

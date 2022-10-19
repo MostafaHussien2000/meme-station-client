@@ -3,7 +3,8 @@ import PostCard from "../components/PostCard";
 import Button from "../components/Button"
 
 function NewFeedPage() {
-  document.title = "MEME STATION | FEED"
+  document.title = "Meme Station | FEED"
+
   return (
     <main id="new-feed-page">
       <section>as</section>
