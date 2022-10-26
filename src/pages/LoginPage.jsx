@@ -53,17 +53,18 @@ function LoginPage() {
                         accessToken: res.data.accessToken,
                         data: res.data.data
                     })
-                    navigate("/")
+                    navigate("/profile/" + res.data.data.username)
                 }
             })
             .catch((err) => {
+                console.dir(err.response?.data?.message)
                 setLoggingErr(err.response?.data?.message)
             });
     };
 
 
     return (
-        <motion.main className="form-page" layoutId="form-page">
+        <motion.main layout className="form-page" layoutId="form-page">
             <motion.header layoutId="form-page__page-header">
                 <Link to="/" id="back-button">
                     <HiOutlineArrowNarrowLeft /> <span>Back to home</span>
@@ -113,6 +114,9 @@ function LoginPage() {
                             >
                                 <SmallLoading /> Login
                             </motion.button>
+                            {
+                                loggingErr ? <p className="logging-err">{loggingErr}</p> : <></>
+                            }
                             <motion.p className="tip" layoutId="form-page__form-tip">
                                 You don't have an account ? <Link to="/create-account">Create one.</Link>
                             </motion.p>

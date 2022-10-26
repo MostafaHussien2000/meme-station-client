@@ -3,9 +3,11 @@ import { NavLink } from "react-router-dom";
 import { AiOutlineFire, AiOutlineBell } from "react-icons/ai";
 import { CgFeed } from "react-icons/cg";
 
+import { motion } from "framer-motion"
+
 function NavBar() {
   return (
-    <nav>
+    <motion.nav layoutId="navbar">
       <ul>
         <li>
           <NavLink
@@ -32,7 +34,7 @@ function NavBar() {
           </NavLink>
         </li>
       </ul>
-    </nav>
+    </motion.nav>
   );
 }
 

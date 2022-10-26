@@ -4,10 +4,52 @@ import { MdModeComment, MdOutlineAddPhotoAlternate } from "react-icons/md";
 import { FiLink2 } from "react-icons/fi";
 import { FaExclamationCircle } from "react-icons/fa"
 
-import { useState } from "react"
+import { useContext, useEffect, useState } from "react"
+import { BASE_URL } from "../server-connection";
+import LoggedUserContext from "../context/loggedUserContext";
+import axios from "axios";
+import { Link } from "react-router-dom";
 
-function PostCard() {
+function PostCard({ username, caption, upvotesCount, downvotesCount, time, meme }) {
+  const { loggedUser } = useContext(LoggedUserContext)
   const [menu, viewMenu] = useState(false)
+
+  const [whoPosted, setWhoPosted] = useState({})
+
+  const covertTime = (t) => {
+    const postTime = new Date(t).getTime();
+    const currentTime = new Date().getTime();
+
+    const diff = currentTime - postTime;
+
+    /* Rules:
+      * Less than minute  => just now
+      * Less than hour    => minutes
+      * Less than day     => hours
+      * Less than month   => days
+      * Less than year    => months
+      * More than year    => years
+    */
+
+    if (diff < 60000) return "Just now"
+    else if (diff < 3.6e+6) return `${Math.round(diff / 60000)} min`
+    else if (diff < 8.64e+7) return `${Math.round(diff / 3.6e+6)} hr`
+    else if (diff < 2.628e+9) return `${Math.round(diff / 8.64e+7)} day`
+    else if (diff < 3.154e+10) return `${Math.round(diff / 2.628e+9)} mon`
+    else if (diff > 3.154e+10) return `${Math.round(diff / 3.154e+10)} year`
+    else return t
+
+  }
+
+
+  useEffect(() => {
+    axios({
+      method: "GET",
+      url: `${BASE_URL}/user/${username}`,
+    }).then((res) => {
+      setWhoPosted(res.data)
+    }).catch(err => console.error(err))
+  }, [])
   return (
     <div className="post_card">
       <div className="top">
@@ -21,20 +63,19 @@ function PostCard() {
         </div>
         <div className="info">
           <p className="username">
-            <span>@mike_john</span>
+            <span>@{username}</span>
             <span className="verfied">
               <BiCheckShield />
             </span>
           </p>
           <h3 className="full_name">
-            <span>Mike John</span>
-            <span className="time">2h</span>
+            <span>{whoPosted.firstName} {whoPosted.lastName}</span>
+            <span className="time">{covertTime(time)}</span>
           </h3>
         </div>
         <div className="menu">
           <BiDotsVerticalRounded onClick={() => {
             viewMenu(m => !m)
-            console.log(menu)
           }} />
           {
             menu ? (
@@ -80,8 +121,7 @@ function PostCard() {
         </div>
       </div>
       <p className="caption">
-        It has grown to become something of an art form, and there are countless
-        filler text generators sprinkled around the web.
+        {caption}
       </p>
       <div className="main-part">
         <div className="meme">
@@ -114,26 +154,33 @@ function PostCard() {
       <div className="states">
         <div className="state likes">
           <HiOutlineArrowSmUp />
-          <span className="count">26</span>
+          <span className="count">{upvotesCount}</span>
         </div>
         <div className="state dislikes">
           <HiOutlineArrowSmDown />
-          <span className="count">10</span>
+          <span className="count">{downvotesCount}</span>
         </div>
-        <div className="state comment">
+
+        {/* TODO: Implement the comments count after implementing the commenting feature */}
+        {/* <div className="state comment">
           <MdModeComment />
-          <span className="count">15</span>
-        </div>
+          <span className="count">??</span>
+        </div> */}
+
       </div>
       <div className="comment">
-        <div className="profile_pic">
-          <img
-            src={
-              "https://assets.codepen.io/t-1/user-default-avatar.jpg?fit=crop&format=auto&height=80&version=0&width=80"
-            }
-            alt=""
-          />
-        </div>
+        <Link to={`/profile/${loggedUser?.data?.username}`}>
+          <div className="profile_pic">
+            <img
+              src={
+                BASE_URL +
+                "/user/uploads/" +
+                loggedUser?.data?.coverPicture?.split("\\")[1]
+              }
+              alt="profile pic"
+            />
+          </div>
+        </Link>
         <form
           className="comment_box"
           onSubmit={(e) => {

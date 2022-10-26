@@ -14,6 +14,9 @@
 @import './components/navbar';
 @import './components/post-card';
 @import './components/loading';
+@import './components/mini-profile-card';
+@import './components/post-placeholder';
+@import './components/profile-placeholder';
 
 
 /* PAGES 
@@ -21,6 +24,7 @@
 @import './pages/new-feed-page';
 @import './pages/home-page';
 @import './pages/form-page';
+@import './pages/profile';
 
 
 /* Globals

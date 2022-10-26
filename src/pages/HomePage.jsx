@@ -6,12 +6,11 @@ import { useContext } from "react";
 import LoggedUserContext from "../context/loggedUserContext";
 
 function HomePage() {
+  document.title = "MEME STATION";
   const { loggedUser, setLoggedUser } = useContext(LoggedUserContext);
-  console.log(loggedUser)
 
   return (
     <main
-
       className="home-page"
     >
       <motion.header
@@ -36,7 +35,6 @@ function HomePage() {
               </>) : (<>
                 <Link to={"/login"} id="login">Login</Link>
                 <Link to={"/create-account"} id="create-account">Create account</Link>
-
               </>)
           }
         </div>

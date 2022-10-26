@@ -42,7 +42,7 @@ function UploadNewMemeButton() {
   return (
     <button className="button upload-button">
       <FiUpload color="#ffffff" />
-      <span>Upload new meme!</span>
+      <span>Upload new meme !</span>
     </button>
   )
 }
