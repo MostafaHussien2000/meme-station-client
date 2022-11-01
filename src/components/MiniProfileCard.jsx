@@ -11,14 +11,21 @@ function MiniProfileCard() {
     return (
         <motion.main id="mini-profile-card" layoutId="profile-info">
             <div className="cover">
-                <img
-                    src={
-                        BASE_URL +
-                        "/user/uploads/" +
-                        loggedUser?.data?.coverPicture?.split("\\")[1]
-                    }
-                    alt="profile pic"
-                />
+                {
+                    loggedUser?.data?.coverPicture ? (
+                        <img
+                            src={
+                                BASE_URL +
+                                "/user/uploads/" +
+                                loggedUser?.data?.coverPicture?.split("\\")[1]
+                            }
+                            alt="profile pic"
+                        />
+                    ) : (
+                        <></>
+                    )
+                }
+
             </div>
             <center className="info">
                 <div className="profile-pic">

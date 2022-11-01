@@ -5,6 +5,7 @@ import MiniProfileCard from "../components/MiniProfileCard";
 import LoggedUserContext from "../context/loggedUserContext";
 import axios from "axios";
 import PostPlaceholder from "../components/PostPlaceholder";
+import { BASE_URL } from "../server-connection";
 
 function NewFeedPage() {
   document.title = "Meme Station | FEED";
@@ -17,22 +18,25 @@ function NewFeedPage() {
 
   const [index, setIndex] = useState(0);
 
+
   const getPosts = async () => {
-    const response = await axios({
+    axios({
       method: "GET",
       url: "http://localhost:8080/post/timeline?index=" + index,
       headers: {
         accessToken: loggedUser.accessToken,
       },
-    });
-
-    console.dir(response.data);
+    }).then(res => {
+      console.dir(res.data);
+    }).catch(err => {
+      setError(err.response.data.message)
+    })
   };
 
   useEffect(() => {
     axios({
       method: "GET",
-      url: "http://localhost:8080/post/timeline?index=" + index,
+      url: BASE_URL + "/post/timeline?index=" + index,
       headers: {
         accessToken: loggedUser.accessToken,
       },
@@ -46,7 +50,7 @@ function NewFeedPage() {
         setLoading(false)
         setError(true)
       });
-  }, []);
+  }, [index]);
 
   return (
     <main id="new-feed-page">
@@ -55,25 +59,6 @@ function NewFeedPage() {
       </section>
       <section id="posts-feed">
         <Button type="upload" />
-        {/* {posts ? (
-          posts.map((post) => (
-            <PostCard
-              key={post._id}
-              username={post.username}
-              caption={post.caption}
-              upvotesCount={post.upVotes.length}
-              downvotesCount={post.downVotes.length}
-              time={post.createdAt}
-            />
-          ))
-        ) : (
-          <div className="loading">
-            <PostPlaceholder />
-            <PostPlaceholder />
-            <PostPlaceholder />
-          </div>
-        )} */}
-
         {
           loading ? (
             <div className="loading">
@@ -95,9 +80,13 @@ function NewFeedPage() {
                     caption={post.caption}
                     upvotesCount={post.upVotes.length}
                     downvotesCount={post.downVotes.length}
+                    upVoted={post.upVotes.includes(loggedUser.data.username)}
+                    downVoted={post.downVotes.includes(loggedUser.data.username)}
                     time={post.createdAt}
+                    postId={post._id}
                   />
-                ))
+                )
+                )
               ) : (
                 <center>
                   <p>No posts to view. Follow someone to view their latest posts in the feed.</p>

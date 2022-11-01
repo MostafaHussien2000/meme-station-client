@@ -3,7 +3,7 @@ import PostPlaceholder from './PostPlaceholder';
 function ProfilePlaceholder() {
     return (
         <main className="profile-placeholder">
-            <section className="main-user" layoutId="profile-info">
+            <section className="main-user">
                 <div className="cover placeholder"></div>
                 <center className="info">
                     <div className="profile-pic">
@@ -13,7 +13,6 @@ function ProfilePlaceholder() {
                     <div className="username placeholder"></div>
                 </center>
             </section>
-            <PostPlaceholder />
         </main>
     )
 }

@@ -56,12 +56,13 @@
     .menu {
       font-size: 25px;
       position: relative;
-
+      
       svg {
         cursor: pointer;
       }
 
       .menu-wrapper {
+        transform-origin: 100% 0%;
         position: absolute;
         background: #fafafa;
         box-shadow: 5px 5px 10px #acacac3a;
@@ -180,19 +181,22 @@
       input {
         display: none;
 
-        &:checked + label {
+      }
+      
+      button {
+        border-radius: 13px;
+        transition: all 0.2s ease;
+        background: transparent;
+        border: none;
+        
+        &.active {
           background: #000;
 
           svg {
             stroke: #fff;
           }
         }
-      }
-
-      label {
-        border-radius: 13px;
-        transition: all 0.2s ease;
-
+        
         * {
           pointer-events: none;
         }
@@ -234,7 +238,6 @@
       align-items: center;
 
       img {
-        border: 2px solid red;
         object-fit: cover;
       }
     }
@@ -254,7 +257,6 @@
       }
 
       input[type=text] {
-
         padding-right: 40px ;
       }
 

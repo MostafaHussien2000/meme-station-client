@@ -19,6 +19,8 @@
         font-size: 13px;
         padding: 5px 8px;
         border-radius: 7px;
+        border: 2px solid #000;
+        transition: all 0.2s ease;
 
         &.following {
             background: #fff;

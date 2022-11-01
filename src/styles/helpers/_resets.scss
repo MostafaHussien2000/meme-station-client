@@ -55,7 +55,8 @@
 
   img {
     width: 100%;
-    display: block;
+    // display: block;
+    object-fit: cover;
   }
 
   input {
@@ -68,9 +69,15 @@
     padding: 0px 20px;
     font-weight: 500;
     font-size: 15px;
+    border: 2px solid transparent;
+    transition: border 0.2s ease;
 
     &::placeholder {
       color: $input-placeholder;
+    }
+
+    &:focus {
+      border: 2px solid $application-color;
     }
   }
 }

@@ -1,0 +1,41 @@
+.settings-page {
+    width: 80%;
+    margin: auto;
+
+    #back-button{
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        gap: 5px;
+        margin: 50px 0px;
+    }
+
+    .main-content {
+        display: flex;
+        align-items: flex-start;
+        gap: 20px;
+
+        .side-nav {
+            width: 250px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: flex-start;
+            gap: 10px;
+            padding-top: 100px;
+
+            a.side_nav_link {
+                padding: 12px 20px;
+                width: 100%;
+                border-radius: 12px;
+                position: relative;
+                transition: background 0.2s ease;
+
+                &.active {
+                    font-weight: 500;
+                    background: $skelton-color;
+                }
+            }
+        }
+    }
+}

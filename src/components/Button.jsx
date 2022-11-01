@@ -1,11 +1,15 @@
-import { useState } from "react";
+import axios from "axios";
+import { useContext, useState } from "react";
 
 import { FiUpload } from "react-icons/fi"
+import LoggedUserContext from "../context/loggedUserContext";
+import { BASE_URL } from "../server-connection";
 
-function Button({ type }) {
+function Button({ type, state, username }) {
+
   switch (type) {
     case "follow":
-      return <FollowButton />;
+      return <FollowButton state={state} username={username} />;
 
     case "upload":
       return <UploadNewMemeButton />
@@ -17,15 +21,33 @@ function Button({ type }) {
 
 export default Button;
 
-function FollowButton() {
-  const [following, setFollowing] = useState(false);
+function FollowButton({ state, username }) {
+  const [following, setFollowing] = useState(state === 0 ? false : true);
+
+  const { loggedUser } = useContext(LoggedUserContext);
 
   const follow = () => {
-    setFollowing(true);
+    axios({
+      method: "PUT",
+      url: BASE_URL + "/user/follow/" + username,
+      headers: {
+        accessToken: loggedUser.accessToken
+      }
+    }).then(res => {
+      setFollowing(true)
+    }).catch(err => console.error(err))
   };
 
   const unFollow = () => {
-    setFollowing(false);
+    axios({
+      method: "PUT",
+      url: BASE_URL + "/user/unfollow/" + username,
+      headers: {
+        accessToken: loggedUser.accessToken
+      }
+    }).then(res => {
+      setFollowing(false);
+    }).catch(err => console.error(err))
   };
 
   return (

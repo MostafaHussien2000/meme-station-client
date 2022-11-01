@@ -8,7 +8,8 @@ import { motion } from "framer-motion"
 function NavBar() {
   return (
     <motion.nav layoutId="navbar">
-      <ul>
+      <div className="search"></div>
+      <ul className="navigation">
         <li>
           <NavLink
             className={({ isActive }) => `nav_link ${isActive ? "active" : ""}`}
@@ -34,6 +35,7 @@ function NavBar() {
           </NavLink>
         </li>
       </ul>
+      <div className="action"></div>
     </motion.nav>
   );
 }

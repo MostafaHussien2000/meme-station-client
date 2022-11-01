@@ -1,93 +1,93 @@
 .user-profile {
-    width: 70%;
-    max-width: 750px;
-    margin: auto;
+  width: 70%;
+  max-width: 750px;
+  margin: auto;
 
-    .main-user {
-        border-radius: 50px;
-        background: #fff;
-        overflow: hidden;
-        margin-bottom: 40px;
+  .main-user {
+    border-radius: 50px;
+    background: #fff;
+    overflow: hidden;
+    margin-bottom: 40px;
 
-        .cover {
-            width: 100%;
-            height: 250px;
-            background: $input-placeholder;
-            overflow: hidden;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            position: relative;
-            
-            img {
-                display: block;
-                object-fit: cover;
-                cursor: pointer;
-            }
+    .cover {
+      width: 100%;
+      height: 250px;
+      background: $input-placeholder;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
 
-            &::before {
-                position: absolute;
-                content: '';
-                width: 100%;
-                height: 100%;
-                backdrop-filter: blur(4px);
-            }
-        }
+      img {
+        display: block;
+        object-fit: cover;
+        cursor: pointer;
+      }
 
-        .info {
-            padding: 0px 10px 40px 10px;
-            position: relative;
-
-            .profile-pic {
-                width: 100px;
-                aspect-ratio: 1 / 1;
-                margin-top: -50px;
-                margin-bottom: 10px;
-                border-radius: 25px;
-                overflow: hidden;
-                border: 4px solid #fff;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                
-                img {
-                    display: block;
-                    object-fit: cover;
-                    cursor: pointer;
-                }
-            }
-
-            .username {
-                color: $input-placeholder;
-                font-weight: 500;
-                font-size: 15px;
-            }
-
-            .states {
-                margin-top: 20px;
-                display: flex;
-                justify-content: space-evenly;
-                align-items: center;
-
-                .state {
-                    .name {
-                        font-size: 15px;
-                        color: $input-placeholder;
-                        font-weight: 500;
-                    }
-                    .number {
-                        font-weight: 700;
-                        font-size: 20px;
-                    }
-                }
-            }
-
-            .settings {
-                position: absolute;
-                font-size: 25px;
-                top: 70px;
-                right: 20px;
-            }
-        }
+      &::before {
+        position: absolute;
+        content: "";
+        width: 100%;
+        height: 100%;
+        backdrop-filter: blur(4px);
+      }
     }
+
+    .info {
+      padding: 0px 10px 40px 10px;
+      position: relative;
+
+      .profile-pic {
+        width: 100px;
+        aspect-ratio: 1 / 1;
+        margin-top: -50px;
+        margin-bottom: 10px;
+        border-radius: 25px;
+        overflow: hidden;
+        border: 5px solid #fff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        
+        img {
+          display: block;
+          cursor: pointer;
+          object-fit: cover;
+        }
+      }
+
+      .username {
+        color: $input-placeholder;
+        font-weight: 500;
+        font-size: 15px;
+      }
+
+      .states {
+        margin-top: 20px;
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+
+        .state {
+          .name {
+            font-size: 15px;
+            color: $input-placeholder;
+            font-weight: 500;
+          }
+          .number {
+            font-weight: 700;
+            font-size: 20px;
+          }
+        }
+      }
+
+      .floating-button {
+        position: absolute;
+        font-size: 25px;
+        top: 70px;
+        right: 20px;
+      }
+    }
+  }
 }
